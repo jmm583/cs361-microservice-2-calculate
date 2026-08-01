@@ -16,18 +16,18 @@ const microsrvcPrompt = (askService) => {
 const main = async () => {
   while (true) {
     const srvcChoice = await microsrvcPrompt(`
-========================================
-    Calculator Microservice Test Client
-========================================
+        ========================================
+            Calculator Microservice Test Client
+        ========================================
 
-Please choose an operation:
+        Please choose an operation:
 
-1. Unit Conversion
-2. Latitude/Longitude Distance
-3. Study Score Calculation
-4. Exit
+        1. Unit Conversion
+        2. Latitude/Longitude Distance
+        3. Study Score Calculation
+        4. Exit
 
-Choice: `);
+        Choice: `);
 
     switch (srvcChoice) {
       case '1':
