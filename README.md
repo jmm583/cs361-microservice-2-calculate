@@ -12,9 +12,9 @@ Client must send HTTP POST request to the `/calculate` route endpoint
     ```js
         httpJsonBody = {
             operation: "convert",
-            value: parseFloat(valueToConvert),
-            unitFrom: conversionOperation.from,
-            unitTo: conversionOperation.to
+            value: valueToConvert,
+            unitFrom: unitFrom,
+            unitTo: unitTo
         };
     ```
 ### Distance Calculation Request
