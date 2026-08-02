@@ -28,7 +28,7 @@ Client must send HTTP POST request to the `/calculate` route endpoint
             endLongitude: longitude2
         };
     ```
-## Study Score Request
+### Study Score Request
 
     ```js
         httpJsonBody = {
@@ -40,7 +40,7 @@ Client must send HTTP POST request to the `/calculate` route endpoint
             overallRating: overallRating
         };
     ```
-## Requests sent using Fetch API
+### Requests sent using Fetch API
     Example Fetch(): 
 
     ```js
@@ -52,7 +52,7 @@ Client must send HTTP POST request to the `/calculate` route endpoint
             body: JSON(httpJsonBody)
         });
     ```
-## Receive Data
+### Receive Data
     Receive data using this format
 
     ```js
