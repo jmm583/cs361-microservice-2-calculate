@@ -2,7 +2,7 @@
 
 ##########################################################################
 ## Communication Contract
-## Send Requests
+### Send Requests
 Client must send HTTP POST request to the `/calculate` route endpoint
     `POST http://localhost:3000/calculate`
     Request body is a JSON Object
