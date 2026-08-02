@@ -16,9 +16,9 @@ const microsrvcPrompt = (askService) => {
 const main = async () => {
   while (true) {
     const srvcChoice = await microsrvcPrompt(`
-        ========================================
-            Calculator Microservice Test Client
-        ========================================
+        ==========================================
+        	Calculator Microservice Test Client
+        ==========================================
 
         Please choose an operation:
 
@@ -49,47 +49,64 @@ const main = async () => {
 			const unitConversionChoice = await microsrvcPrompt(`
 				Please choose a unit conversion operation:
 
-				1. Meters to Feet
-				2. Feet to Meters
-				3. Miles to Kilometers
-				4. Kilometers to Miles
-				5. Kilograms to Pounds
-				6. Pounds to Kilograms
-				7. Celsius to Fahrenheit
-				8. Fahrenheit to Celsius
+					1. Meters to Feet
+					2. Feet to Meters
+					3. Miles to Kilometers
+					4. Kilometers to Miles
+					5. Kilograms to Pounds
+					6. Pounds to Kilograms
+					7. Celsius to Fahrenheit
+					8. Fahrenheit to Celsius
 
 				Choice: `);
 
-	
-			const value1ToConvert = await microsrvcPrompt('Enter the first value to convert: ');
-			const value2ToConvert = await microsrvcPrompt('Enter the second value to convert: ');
+			console.log(`You chose: ${unitConversionChoice}`);
+			
+			// Correct naming convention for the value to convert using npm module convert-units
+			const conversionOperations = {
+				'1': { from: "m",  to: "ft" },
+				'2': { from: "ft", to: "m" },
+				'3': { from: "mi", to: "km" },
+				'4': { from: "km", to: "mi" },
+				'5': { from: "kg", to: "lb" },
+				'6': { from: "lb", to: "kg" },
+				'7': { from: "C",  to: "F" },
+				'8': { from: "F",  to: "C" }
+			};
 
-		
+			// map the user choice to the corresponding conversion operation
+			const conversionOperation = conversionOperations[unitConversionChoice];
+
+			// prompt user for the value to convert
+			const valueToConvert = await microsrvcPrompt(`Enter the value to convert from ${conversionOperation.from} to ${conversionOperation.to}: `);
 
 			const http_req_body = {
-				operation: unitConversionChoice,
-				value1: parseFloat(value1ToConvert),
-				value2: parseFloat(value2ToConvert)
-        	}
-
+				operation: conversionOperation,
+				value: valueToConvert,
+				unitFrom: conversionOperation.from,
+				unitTo: conversionOperation.to
+			};
+			console.log(http_req_body);
         break;
 
+		case '2':
+		// call latitude/longitude distance microservice
+		break;
 
-	case '2':
-	// call latitude/longitude distance microservice
-	break;
-	case '3':
-	// call study score calculation microservice
-	break;
+		case '3':
+		// call study score calculation microservice
+		break;
 
-	case '4':
-	console.log('Exiting...');
-	rl.close();
-	return;
-	default:
-	console.log('Invalid choice. Please try again.');
+		case '4':
+
+			console.log('Exiting...');
+			rl.close();
+			return;
+		
+		default:
+		console.log('Invalid choice. Please try again.');
+		}
 	}
-  }
   console.log(srvcChoice);
 };
 
