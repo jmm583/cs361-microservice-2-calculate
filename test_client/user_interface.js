@@ -70,7 +70,7 @@ const main = async () => {
 			// creates object to hold the unit conversion operation and value to convert
 			// converts value to float before sending HTTP request body
 			const http_req_body_convert = {
-				operation: conversionOperation,
+				operation: "convert",
 				value: parseFloat(valueToConvert),
 				unitFrom: conversionOperation.from,
 				unitTo: conversionOperation.to
@@ -112,7 +112,7 @@ const main = async () => {
 			// creates object to hold the study score calculation inputs
 			// converts scores to integer before sending the HTTP request body
 			const http_req_body_study = {
-				operation: "Study Score Calculation",
+				operation: "studyScore",
 				studyScore: parseInt(studyScore),
 				wifiScore: parseInt(wifiScore),
 				noiseScore: parseInt(noiseScore),
