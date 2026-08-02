@@ -40,7 +40,7 @@ Express.js for routing, middleware, request/response handling
 7) Follow the prompts by entering requested
 
 ### Microservice Implementation Instructions
-1) Format your http request body as a JSON object. The microservice handles 3 operations:
+1) Format your HTTP request body as a JSON object. The microservice handles 3 operations:
 
     Operation 1: UNIT CONVERSION -- Operation converts one unit of measurement to another
     -- For a list of packaged units reference: https://github.com/convert-units/convert-units#request-measures--units
@@ -87,7 +87,7 @@ Express.js for routing, middleware, request/response handling
     ```
                   
 ## Microservice Implementation Instructions cont...
-2) Send an http POST request to /calculate
+2) Send an HTTP POST request to /calculate
 
     ```js
     const response = await fetch('http://localhost:3000/calculate', {
