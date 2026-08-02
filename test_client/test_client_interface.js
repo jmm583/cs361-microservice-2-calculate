@@ -76,7 +76,7 @@ const main = async () => {
 				unitTo: conversionOperation.to
 			};
 
-			console.log(http_req_body)
+			console.log("\nHTTP REQ BODY: ", http_req_body)
 
 			// sends an http request with http_req_body to /calulate route 
 			const response = await fetch('http://localhost:3000/calculate', {
@@ -86,7 +86,7 @@ const main = async () => {
 			});
 
 			const data = await response.json();
-			console.log(data);
+			console.log("\nHTTP RESPONSE: ", data);
 
         break;
 		};
@@ -108,7 +108,7 @@ const main = async () => {
 				endLatitude: parseFloat(latitude2),
 				endLongitude: parseFloat(longitude2)
 			};
-			console.log(http_req_body);
+			console.log("\nHTTP REQ BODY: ", http_req_body);
 
 			// sends an http request with http_req_body to /calculate route
 			const response = await fetch('http://localhost:3000/calculate', {
@@ -118,7 +118,7 @@ const main = async () => {
 			});
 
 			const data = await response.json();
-			console.log(data);
+			console.log("\nHTTP RESPONSE: ", data);
 
 		break;
 		};
@@ -127,7 +127,6 @@ const main = async () => {
 		// prompts user for study score calculation inputs
 			console.log('Study Score Calculation:');
 			console.log('Please enter the following information:');
-			const studyScore = await userPrompt('Enter the study score (0 to 5): ');
 			const wifiScore = await userPrompt('Enter the WiFi score (0 to 5): ');
 			const noiseScore = await userPrompt('Enter the noise score (0 to 5): ');
 			const seatingScore = await userPrompt('Enter the seating score (0 to 5): ');
@@ -138,14 +137,13 @@ const main = async () => {
 			// converts scores to integer before sending the HTTP request body
 			const http_req_body = {
 				operation: "studyScore",
-				studyScore: parseInt(studyScore),
 				wifiScore: parseInt(wifiScore),
 				noiseScore: parseInt(noiseScore),
 				seatingScore: parseInt(seatingScore),
 				outletScore: parseInt(outletScore),
 				overallRating: parseInt(overallRating)
 			};
-			console.log(http_req_body);
+			console.log("\nHTTP REQ BODY: ", http_req_body);
 
 			// sends an http request with http_req_body to /calulate route 
 			const response = await fetch('http://localhost:3000/calculate', {
@@ -153,6 +151,10 @@ const main = async () => {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(http_req_body)
 			});
+
+			const data = await response.json();
+			console.log("\nHTTP RESPONSE: ", data);
+			
 		break;
 		};
 

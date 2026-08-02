@@ -21,7 +21,7 @@ async function calculate (req, res) {
                 unitFrom: req.body.unitFrom,
                 unitTo: req.body.unitTo,
                 convertedValue: convertedUnitValue
-            }
+            };
 
             res.json({
                 method: "POST",
@@ -31,7 +31,6 @@ async function calculate (req, res) {
 
         break;
         };
-
 
         // CALL DISTANCE SERVICE FUNCTIONS 
         case "distance": {
@@ -49,7 +48,7 @@ async function calculate (req, res) {
                 meterDist: meterDist,
                 kmDist: kmDist,
                 miDist: miDist
-            }
+            };
 
             res.json({
                 method: "POST",
@@ -60,10 +59,26 @@ async function calculate (req, res) {
         break;
         };
 
-
         // CALL STUDY SCORE SERVICE FUNCTIONS
         case "studyScore": {
-            console.log("STUDY SCORE");
+            
+            const studyScore = studyScoreService.studyScore (
+                                req.body.wifiScore, req.body.noiseScore, 
+                                req.body.seatingScore, req.body.outletScore, 
+                                req.body.overallRating
+                            );
+
+            httpResBody = {
+                operationPerformed: req.body.operation,
+                studyScore: studyScore
+            };
+
+            res.json({
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(httpResBody)
+            });
+
         break;
         };
     }
