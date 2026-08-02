@@ -2,10 +2,10 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
-const calculateRoutes = require("./src/routes/CalculateRoutes");
-
 app.use(express.json());
 
+const calculateRoutes = require("./src/routes/CalculateRoutes");
+// send only the server requests for /calculate to the router
 app.use('/calculate', calculateRoutes);	
 
 app.listen(PORT, () => {
