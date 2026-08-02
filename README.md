@@ -1,5 +1,65 @@
 # cs361-calculator-microservice
 
+##########################################################################
+## Communication Contract
+## Send Requests
+Client must send HTTP POST request to the `/calculate` route endpoint
+    `POST http://localhost:3000/calculate`
+    Request body is a JSON Object
+
+### Unit Conversion Request
+
+    ```js
+        httpJsonBody = {
+            operation: "convert",
+            value: parseFloat(valueToConvert),
+            unitFrom: conversionOperation.from,
+            unitTo: conversionOperation.to
+        };
+    ```
+### Distance Calculation Request
+
+    ```js
+        httpJsonBody = {
+            operation: "distance",
+            startLatitude: latitude1,
+            startLongitude: longitude1,
+            endLatitude: latitude2,
+            endLongitude: longitude2
+        };
+    ```
+## Study Score Request
+
+    ```js
+        httpJsonBody = {
+            operation: "studyScore",
+            wifiScore: wifiScore,
+            noiseScore: noiseScore,
+            seatingScore: seatingScore,
+            outletScore: outletScore,
+            overallRating: overallRating
+        };
+    ```
+## Requests sent using Fetch API
+    Example Fetch(): 
+
+    ```js
+        const response = await fetch("http://localhost:3000/calculate", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON(httpJsonBody)
+        });
+    ```
+## Receive Data
+    Receive data using this format
+
+    ```js
+        const microSrvcData = await response.json();
+    ```
+##########################################################################
+
 ## Description
 The Calculator Microservice provides three different calculation operations through HTTP POST endpoint (`/calculate`). 
 Depending on the operation requested, the microservice can:
