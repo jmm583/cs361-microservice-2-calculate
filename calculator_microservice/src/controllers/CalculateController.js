@@ -12,6 +12,23 @@ async function calculate (req, res) {
         // CALL CONVERT SERVICE FUNCTIONS
         case "convert": {
             console.log("CONVERT");
+            
+            const convertedUnitValue = unitConversionService.convertUnits(req.body.value, req.body.unitFrom, req.body.unitTo);
+            console.log(convertedUnitValue);
+
+            httpResBody = {
+                operationPerformed: req.body.operation,
+                unitFrom: req.body.unitFrom,
+                unitTo: req.body.unitTo,
+                convertedValue: convertedUnitValue
+            }
+
+            res.json({
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(httpResBody)
+            })
+
         break;
         };
 
@@ -36,7 +53,7 @@ async function calculate (req, res) {
 
             res.json({
                 method: "POST",
-                headers: { "Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(httpResBody)
             });
 

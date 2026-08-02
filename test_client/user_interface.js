@@ -65,7 +65,7 @@ const main = async () => {
 			const conversionOperation = conversionOperations[unitConversionChoice];
 
 			// prompt user for the value to convert
-			const valueToConvert = await userPrompt(`Enter the value to convert from ${conversionOperation.from} to ${conversionOperation.to}: `);
+			const valueToConvert = await userPrompt(`Enter the value in ${conversionOperation.from} to convert to ${conversionOperation.to}: `);
 			
 			// creates object to hold the unit conversion operation and value to convert
 			// converts value to float before sending HTTP request body
@@ -81,9 +81,12 @@ const main = async () => {
 			// sends an http request with http_req_body to /calulate route 
 			const response = await fetch('http://localhost:3000/calculate', {
 				method: "POST",
-				headers: { "Content-Type": "application/json"},
+				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(http_req_body)
 			});
+
+			const data = await response.json();
+			console.log(data);
 
         break;
 		};
@@ -110,7 +113,7 @@ const main = async () => {
 			// sends an http request with http_req_body to /calculate route
 			const response = await fetch('http://localhost:3000/calculate', {
 				method: "POST",
-				headers: { "Content-Type": "application/json"},
+				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(http_req_body)
 			});
 
@@ -147,7 +150,7 @@ const main = async () => {
 			// sends an http request with http_req_body to /calulate route 
 			const response = await fetch('http://localhost:3000/calculate', {
 				method: "POST",
-				headers: { "Content-Type": "application/json"},
+				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(http_req_body)
 			});
 		break;
