@@ -14,10 +14,14 @@ async function calculate (req, res) {
         break;
 
         case "distance":
-            
-            console.log("DISTANCE");
-            // async function to send 
-            const distServiceReqBody = req.body;
+
+            // console.log("DISTANCE");
+            const dist = distanceService.meterDistance(
+                { latitude: req.body.startLatitude, longitude: req.body.startLongitude },
+                { latitude: req.body.endLatitude, longitude: req.body.endLongitude }
+            )
+
+            console.log("Distance from NY to Boston is: ", dist)
 
         break;
 
