@@ -30,7 +30,7 @@ const main = async () => {
         Choice: `);
 
     switch (serviceChoice) {
-		case '1':
+		case '1': {
 		// prompts user for unit conversion operation and value to convert
 			const unitConversionChoice = await userPrompt(`
 				Please choose a unit conversion operation:
@@ -69,25 +69,26 @@ const main = async () => {
 			
 			// creates object to hold the unit conversion operation and value to convert
 			// converts value to float before sending HTTP request body
-			const http_req_body_convert = {
+			const http_req_body = {
 				operation: "convert",
 				value: parseFloat(valueToConvert),
 				unitFrom: conversionOperation.from,
 				unitTo: conversionOperation.to
 			};
-			console.log(http_req_body_convert);
 
+			console.log(http_req_body)
 
-			// sends an http request with http_req_body_convert to /calulate route 
+			// sends an http request with http_req_body to /calulate route 
 			const response = await fetch('http://localhost:3000/calculate', {
 				method: "POST",
 				headers: { "Content-Type": "application/json"},
-				body: JSON.stringify(http_req_body_convert)
+				body: JSON.stringify(http_req_body)
 			});
 
         break;
+		};
 
-		case '2':
+		case '2': {
 			// prompts user for latitude and longitude of two points
 			const latitude1 = await userPrompt('Enter the latitude of the first point: ');
 			const longitude1 = await userPrompt('Enter the longitude of the first point: ');
@@ -97,17 +98,26 @@ const main = async () => {
 
 			// creates object to hold latitude and longitude inputs
 			// converts latitude and longitude to float before sending HTTP request body
-			const http_req_body_dist = {
+			const http_req_body = {
 				operation: "distance", 
 				startLatitude: parseFloat(latitude1),
 				startLongitude: parseFloat(longitude1),
 				endLatitude: parseFloat(latitude2),
 				endLongitude: parseFloat(longitude2)
 			};
-			console.log(http_req_body_dist);
-		break;
+			console.log(http_req_body);
 
-		case '3':
+			// sends an http request with http_req_body to /calculate route
+			const response = await fetch('http://localhost:3000/calculate', {
+				method: "POST",
+				headers: { "Content-Type": "application/json"},
+				body: JSON.stringify(http_req_body)
+			});
+
+		break;
+		};
+
+		case '3': {
 		// prompts user for study score calculation inputs
 			console.log('Study Score Calculation:');
 			console.log('Please enter the following information:');
@@ -120,7 +130,7 @@ const main = async () => {
 			
 			// creates object to hold the study score calculation inputs
 			// converts scores to integer before sending the HTTP request body
-			const http_req_body_study = {
+			const http_req_body = {
 				operation: "studyScore",
 				studyScore: parseInt(studyScore),
 				wifiScore: parseInt(wifiScore),
@@ -129,10 +139,18 @@ const main = async () => {
 				outletScore: parseInt(outletScore),
 				overallRating: parseInt(overallRating)
 			};
-			console.log(http_req_body_study);
-		break;
+			console.log(http_req_body);
 
-		case '4':
+			// sends an http request with http_req_body to /calulate route 
+			const response = await fetch('http://localhost:3000/calculate', {
+				method: "POST",
+				headers: { "Content-Type": "application/json"},
+				body: JSON.stringify(http_req_body)
+			});
+		break;
+		};
+
+		case '4': 
 			console.log('Exiting...');
 			rl.close();
 			return;
