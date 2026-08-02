@@ -76,6 +76,15 @@ const main = async () => {
 				unitTo: conversionOperation.to
 			};
 			console.log(http_req_body_convert);
+
+
+			// sends an http request with http_req_body_convert to /calulate route 
+			const response = await fetch('http://localhost:3000/calculate', {
+				method: "POST",
+				headers: { "Content-Type": "application/json"},
+				body: JSON.stringify(http_req_body_convert)
+			});
+
         break;
 
 		case '2':

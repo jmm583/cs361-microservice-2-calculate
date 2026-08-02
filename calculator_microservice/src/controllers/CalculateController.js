@@ -2,28 +2,49 @@ const unitConversionService = require("../services/UnitConversionService");
 const distanceService = require("../services/DistanceService");
 const studyScoreService = require("../services/StudyScoreService");
 
-// exports.calculate = async (req, res) => { 
+const calculate = async (req, res) => { 
 
-//     const microServiceOperation = req.body.operation
+    const url = "http://localhost:3000";
 
-//     if ( microServiceOperation === 'convert' ) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Response Status: ${response.status}`);
+        }
 
-//     } else if ( microServiceOperation === 'distance ') {
+        const result = await response.json();
+        console.log(result);
+    } catch (error) {
+        console.error(error.message);
+    }
+}
 
-//     } else if ( microServiceOperation === 'studyScore' ) {
+    // if ( microServiceOperation === 'convert' ) {
 
-//     }
+    //     console.log(req.body);
+    //     res.json({message: "user Interface reached controller"})
 
-// }
+    // } else if ( microServiceOperation === 'distance ') {
+        
+    //     console.log(req.body);
+    //     res.json({message: "user Interface reached controller"})
+
+    // } else if ( microServiceOperation === 'studyScore' ) {
+
+    //     console.log(req.body);
+    //     res.json({message: "user Interface reached controller"})
+    // }
+
+
 
 
 // test for controller
-const calculate = (req, res) => {
-    console.log(req.body);
+// const calculate = (req, res) => {
+//     console.log(req.body);
 
-    res.json({
-        message: "hit controller"
-    })
-}
+//     res.json({
+//         message: "hit controller"
+//     })
+// }
 
 module.exports = {calculate};
