@@ -14,7 +14,11 @@ async function calculate (req, res) {
         break;
 
         case "distance":
+            
             console.log("DISTANCE");
+            // async function to send 
+            const distServiceReqBody = req.body;
+
         break;
 
         case "studyScore":
