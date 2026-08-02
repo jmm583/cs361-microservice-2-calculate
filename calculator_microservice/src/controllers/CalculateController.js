@@ -18,10 +18,12 @@ const studyScoreService = require("../services/StudyScoreService");
 
 
 // test for controller
-exports.calculate = (req, res) => {
+const calculate = (req, res) => {
     console.log(req.body);
 
     res.json({
         message: "hit controller"
     })
 }
+
+module.exports = {calculate};
