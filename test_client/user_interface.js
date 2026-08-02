@@ -114,6 +114,9 @@ const main = async () => {
 				body: JSON.stringify(http_req_body)
 			});
 
+			const data = await response.json();
+			console.log(data);
+
 		break;
 		};
 

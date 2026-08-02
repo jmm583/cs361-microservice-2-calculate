@@ -5,12 +5,12 @@ function meterDistance(startCoordinates, endCoordinates) {
     return geolib.getDistance(startCoordinates, endCoordinates);
 }
 
-function mileDistance() {
-    return geolib.convertDistance()
+function mileDistance(distanceInMeters) {
+    return geolib.convertDistance(distanceInMeters, "mi")
 }
 
-function kmDistance() {
-    return geolib.convertDistance()
+function kmDistance(distanceInMeters) {
+    return geolib.convertDistance(distanceInMeters, "km")
 }
 
 

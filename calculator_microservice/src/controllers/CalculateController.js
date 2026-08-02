@@ -5,33 +5,51 @@ const studyScoreService = require("../services/StudyScoreService");
 
 async function calculate (req, res) {
     console.log(req.body);
-    console.log(req.body.operation);
     const serviceOperation = req.body.operation;
 
     switch(serviceOperation) {
-        case "convert":
+
+        // CALL CONVERT SERVICE FUNCTIONS
+        case "convert": {
             console.log("CONVERT");
         break;
+        };
 
-        case "distance":
 
-            // console.log("DISTANCE");
-            const dist = distanceService.meterDistance(
+        // CALL DISTANCE SERVICE FUNCTIONS 
+        case "distance": {
+
+            const meterDist = distanceService.meterDistance(
                 { latitude: req.body.startLatitude, longitude: req.body.startLongitude },
                 { latitude: req.body.endLatitude, longitude: req.body.endLongitude }
-            )
+            );
 
-            console.log("Distance from NY to Boston is: ", dist)
+            const kmDist = distanceService.kmDistance(meterDist);
+            const miDist = distanceService.mileDistance(meterDist);
+
+            httpResBody = {
+                operationPerformed: req.body.operation,
+                meterDist: meterDist,
+                kmDist: kmDist,
+                miDist: miDist
+            }
+
+            res.json({
+                method: "POST",
+                headers: { "Content-Type": "application/json"},
+				body: JSON.stringify(httpResBody)
+            });
 
         break;
+        };
 
-        case "studyScore":
+
+        // CALL STUDY SCORE SERVICE FUNCTIONS
+        case "studyScore": {
             console.log("STUDY SCORE");
         break;
+        };
     }
-
-    res.json({message: "hit controller"})
-
 }
 
 module.exports = {calculate};
