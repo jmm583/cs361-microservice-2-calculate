@@ -1,6 +1,6 @@
 # cs361-calculator-microservice
 
-### Description
+## Description
 The Calculator Microservice provides three different calculation operations through HTTP POST endpoint (`/calculate`). 
 Depending on the operation requested, the microservice can:
 
@@ -11,19 +11,19 @@ Depending on the operation requested, the microservice can:
 The client sends a JSON request containing the desired operation and any required values. 
 The microservice processes the request and returns the operation results in the body of a JSON response.
 
-### Technologies Used
+## Technologies Used
 Node.js for runtime
 Express.js for routing, middleware, request/response handling
 
-### Prerequesites
+## Prerequesites
 - Node.js
 - node packet manager (npm)
 
-### Node Packages:
+## Node Packages:
 - convert-units   -- Used for unit conversion operations
 - geolib          -- Used for distance calculation between latitude/longitude coordinates for distance operations
 
-### Instructions for Demonstration
+## Instructions for Demonstration
 1) Open a terminal
 2) Navigate to directory /calculator_microservice 
 3) Initialize the node server by entering the following bash commands:
@@ -39,7 +39,7 @@ Express.js for routing, middleware, request/response handling
 
 7) Follow the prompts by entering requested
 
-### Microservice Implementation Instructions
+## Microservice Implementation Instructions
 1) Format your HTTP request body as a JSON object. The microservice handles 3 operations:
 
     Operation 1: UNIT CONVERSION -- Operation converts one unit of measurement to another
@@ -86,7 +86,7 @@ Express.js for routing, middleware, request/response handling
     };
     ```
                   
-## Microservice Implementation Instructions cont...
+### Microservice Implementation Instructions cont...
 2) Send an HTTP POST request to /calculate
 
     ```js
