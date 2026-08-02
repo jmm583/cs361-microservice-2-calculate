@@ -12,8 +12,8 @@ The client sends a JSON request containing the desired operation and any require
 The microservice processes the request and returns the operation results in the body of a JSON response.
 
 ## Technologies Used
-Node.js for runtime
-Express.js for routing, middleware, request/response handling
+- Node.js for runtime
+- Express.js for routing, middleware, request/response handling
 
 ## Prerequesites
 - Node.js
