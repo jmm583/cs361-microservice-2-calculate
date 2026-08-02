@@ -40,8 +40,7 @@ Express.js for routing, middleware, request/response handling
 7) Follow the prompts by entering requested
 
 ### Microservice Implementation Instructions
-1) Add a POST route in your application https router to /calculate
-2) Format your http request body as a JSON object. The microservice handles 3 operations:
+1) Format your http request body as a JSON object. The microservice handles 3 operations:
 
     Operation 1: UNIT CONVERSION -- Operation converts one unit of measurement to another
     -- For a list of packaged units reference: https://github.com/convert-units/convert-units#request-measures--units
@@ -88,7 +87,7 @@ Express.js for routing, middleware, request/response handling
     ```
                   
 ## Microservice Implementation Instructions cont...
-4) Send an http POST request to /calculate
+2) Send an http POST request to /calculate
 
     ```js
     const response = await fetch('http://localhost:3000/calculate', {
@@ -98,7 +97,7 @@ Express.js for routing, middleware, request/response handling
     });
     ```
 
-5) Add a response listener to receive the response from the microservice operation
+3) Add a response listener to receive the response from the microservice operation
 
     ```js
     const data = await response.json();
