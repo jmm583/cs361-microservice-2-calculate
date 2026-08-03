@@ -1,4 +1,10 @@
-# cs361-calculator-microservice
+# Calculator Microservice
+## Developers
+- Jon Marchand
+- Clarke Stephens
+
+Built for CS 361 at Oregon State University
+Project Group: Microservice Masters
 
 ## Description
 The Calculator Microservice provides three different calculation operations through HTTP POST endpoint (`/calculate`)
