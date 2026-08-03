@@ -4,24 +4,26 @@ const studyScoreService = require("../services/StudyScoreService");
 
 
 async function calculate (req, res) {
-    console.log(req.body);
+    
     const serviceOperation = req.body.operation;
 
     switch(serviceOperation) {
 
         // CALL CONVERT SERVICE FUNCTIONS
         case "convert": {
-            console.log("CONVERT");
+            console.log("CONVERT OP REQUESTED");
+            console.log("HTTP REQUEST BODY: ", serviceOperation.body)
             
             const convertedUnitValue = unitConversionService.convertUnits(req.body.value, req.body.unitFrom, req.body.unitTo);
             console.log(convertedUnitValue);
-
+            
             httpResBody = {
                 operationPerformed: req.body.operation,
                 unitFrom: req.body.unitFrom,
                 unitTo: req.body.unitTo,
                 convertedValue: convertedUnitValue
             };
+            console.log("CONVERT OP HTTP POST RESPONSE BODY", httpResBody);
 
             res.json({
                 method: "POST",
@@ -35,6 +37,9 @@ async function calculate (req, res) {
         // CALL DISTANCE SERVICE FUNCTIONS 
         case "distance": {
 
+            console.log("DISTANCE OP REQUESTED")
+            console.log("HTTP REQUEST BODY: ", req.body)
+
             const meterDist = distanceService.meterDistance(
                 { latitude: req.body.startLatitude, longitude: req.body.startLongitude },
                 { latitude: req.body.endLatitude, longitude: req.body.endLongitude }
@@ -42,13 +47,14 @@ async function calculate (req, res) {
 
             const kmDist = distanceService.kmDistance(meterDist);
             const miDist = distanceService.mileDistance(meterDist);
-
+            
             httpResBody = {
                 operationPerformed: req.body.operation,
                 meterDist: meterDist,
                 kmDist: kmDist,
                 miDist: miDist
             };
+            console.log("DISTANCE OP HTTP RES BODY", httpResBody);
 
             res.json({
                 method: "POST",
@@ -61,6 +67,9 @@ async function calculate (req, res) {
 
         // CALL STUDY SCORE SERVICE FUNCTIONS
         case "studyScore": {
+
+            console.log("STUDY SCORE OP REQUESTED")
+            console.log("HTTP REQUEST BODY: ", req.body)
             
             const studyScore = studyScoreService.studyScore (
                                 req.body.wifiScore, req.body.noiseScore, 
@@ -68,10 +77,12 @@ async function calculate (req, res) {
                                 req.body.overallRating
                             );
 
-            httpResBody = {
+            const httpResBody = {
                 operationPerformed: req.body.operation,
                 studyScore: studyScore
             };
+            console.log("STUDY SCORE OP HTTP RES BODY", httpResBody);
+
 
             res.json({
                 method: "POST",
