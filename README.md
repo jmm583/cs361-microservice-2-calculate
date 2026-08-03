@@ -60,6 +60,10 @@ Client must send HTTP POST request to the `/calculate` route endpoint
     ```
 ##########################################################################
 
+## UML Sequence Diagram
+
+![UML Sequence Diagram](calculator_microservice/uml/uml_seq_diagram.png "Calculator Microservice UML Sequence Diagram")
+
 ## Description
 The Calculator Microservice provides three different calculation operations through HTTP POST endpoint (`/calculate`). 
 Depending on the operation requested, the microservice can:
