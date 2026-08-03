@@ -82,7 +82,7 @@ Client must send HTTP POST request to the `/calculate` route endpoint
     ```
 
 ## UML Sequence Diagram
-![UML Sequence Diagram](calculator_microservice/uml/uml_seq_diagram.png "Calculator Microservice UML Sequence Diagram
+![UML Sequence Diagram](calculator_microservice/uml/uml_seq_diagram.png "Calculator Microservice UML Sequence Diagram")
 
 ## Instructions for Demonstration
 1) Open a terminal
