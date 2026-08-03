@@ -68,6 +68,6 @@ async function testStudyScore() {
 
 };
 
-// testUnitConversion()
+testUnitConversion()
 // testDistance()
-testStudyScore()
+// testStudyScore()
