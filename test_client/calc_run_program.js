@@ -1,14 +1,13 @@
 // UNIT CONVERSION OPERATION TEST
 async function testUnitConversion() {
 
-    console.log("UNIT CONVERT OP REQUEST BODY");
     const http_req_body = {
         operation: "convert",
 		value: 5,
 		unitFrom: "m",
 		unitTo: "ft"
     };
-    console.log(http_req_body);
+    console.log("UNIT CONVERT OP REQUEST BODY: ", http_req_body);
 
 
     const response = await fetch('http://localhost:3000/calculate', {
@@ -25,7 +24,6 @@ async function testUnitConversion() {
 // DISTANCE OPERATION TEST
 async function testDistance() {
 
-    console.log("DIST OP REQUEST BODY");
     const http_req_body = {
         operation: "distance", 
         startLatitude: 40.7128,
@@ -33,7 +31,7 @@ async function testDistance() {
         endLatitude: 42.3601,
         endLongitude: -71.0589
 	};
-    console.log(http_req_body);
+    console.log("DIST OP REQUEST BODY: ", http_req_body);
 
     const response = await fetch('http://localhost:3000/calculate', {
                     method: "POST",
@@ -56,7 +54,7 @@ async function testStudyScore() {
         outletScore: 5,
         overallRating: 4
     };
-    console.log(http_req_body);
+    console.log("STUDY SCORE OP REQUEST BODY: ", http_req_body);
 
 
     const response = await fetch('http://localhost:3000/calculate', {
@@ -66,10 +64,10 @@ async function testStudyScore() {
                 });
 
     const data = await response.json();
-    console.log("\nHTTP RESPONSE: ", data);
+    console.log("\nSTUDY SCORE HTTP RESPONSE: ", data);
 
 };
 
 // testUnitConversion()
-testDistance()
-// testStudyScore()
+// testDistance()
+testStudyScore()
