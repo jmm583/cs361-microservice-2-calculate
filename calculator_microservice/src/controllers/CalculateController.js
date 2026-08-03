@@ -12,7 +12,7 @@ async function calculate (req, res) {
         // CALL CONVERT SERVICE FUNCTIONS
         case "convert": {
             console.log("CONVERT OP REQUESTED");
-            console.log("HTTP REQUEST BODY: ", serviceOperation.body)
+            console.log("HTTP REQUEST BODY: ", req.body)
             
             const convertedUnitValue = unitConversionService.convertUnits(req.body.value, req.body.unitFrom, req.body.unitTo);
             console.log(convertedUnitValue);
