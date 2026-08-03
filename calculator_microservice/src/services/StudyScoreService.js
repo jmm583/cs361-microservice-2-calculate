@@ -1,4 +1,4 @@
-// build service functions here and export so that controller has access to them
+// Study Score Service
 
 function studyScore(score1, score2, score3, score4, score5) {
 
@@ -10,8 +10,5 @@ function studyScore(score1, score2, score3, score4, score5) {
 
     return scoreOutOf100;
 };
-
-
-// console.log(studyScore(5, 4, 5, 5, 5, 5));
 
 module.exports = { studyScore };
