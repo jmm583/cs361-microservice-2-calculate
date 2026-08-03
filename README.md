@@ -58,6 +58,9 @@ Client must send HTTP POST request to the `/calculate` route endpoint
     ```js
         const microSrvcData = await response.json();
     ```
+
+## UML Sequence Diagram
+![UML Sequence Diagram](uml/uml_seq_diagram.png "Calculator Microservice UML Sequence Diagram")
 ##########################################################################
 
 ## Description
