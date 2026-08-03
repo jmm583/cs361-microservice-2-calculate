@@ -112,7 +112,7 @@ Example below showing the retieval of `convertedValue` from the UnitConversionSe
 
 4) Open a second terminal
 5) Navigate to the /test_client directory
-6) Start the test_client interface by entering the following command in terminal:
+6) Run the test_client by entering the following command in terminal:
 
     - node cal_run_program.js
 
