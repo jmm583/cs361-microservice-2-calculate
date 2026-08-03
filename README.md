@@ -1,13 +1,53 @@
-# cs361-calculator-microservice
+# Calculator Microservice
+## Developers
+- Jon Marchand
+- Clarke Stephens
 
-##########################################################################
+Built for CS 361 at Oregon State University
+Project Group: Microservice Masters
+
+## Description
+The Calculator Microservice provides three different calculation operations through HTTP POST endpoint (`/calculate`)
+Depending on the operation requested, the microservice can:
+
+- Convert one unit of measurement to another
+- Calculate the distance between two latitude/longitude coordinates
+- Calculate a study score based on the provided inputs
+
+The client sends a JSON request containing the desired operation and any required values 
+The microservice processes the request and returns the operation results in the body of a JSON response
+
+### Technologies Used
+- Node.js for runtime
+- Express.js for routing, middleware, request/response handling
+
+### Prerequisites
+- Node.js
+- node packet manager (npm)
+
+### Node Packages:
+- convert-units   -- Used for unit conversion operations
+- geolib          -- Used for distance calculation between latitude/longitude coordinates for distance operations
+
 ## Communication Contract
-### Send Requests
+### Request Data through Fetch API:
+Requests are sent using the Fetch API. An example below is provided
+Example Fetch(): 
+
+    ```js
+        const response = await fetch("http://localhost:3000/calculate", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(httpJsonBody)
+        });
+    ```
 Client must send HTTP POST request to the `/calculate` route endpoint
     `POST http://localhost:3000/calculate`
     Request body is a JSON Object
 
-### Unit Conversion Request
+### Unit Conversion Request Body
 
     ```js
         httpJsonBody = {
@@ -17,7 +57,7 @@ Client must send HTTP POST request to the `/calculate` route endpoint
             unitTo: unitTo
         };
     ```
-### Distance Calculation Request
+### Distance Calculation Request Body
 
     ```js
         httpJsonBody = {
@@ -28,7 +68,7 @@ Client must send HTTP POST request to the `/calculate` route endpoint
             endLongitude: longitude2
         };
     ```
-### Study Score Request
+### Study Score Request Body
 
     ```js
         httpJsonBody = {
@@ -40,66 +80,41 @@ Client must send HTTP POST request to the `/calculate` route endpoint
             overallRating: overallRating
         };
     ```
-### Requests sent using Fetch API
-    Example Fetch(): 
-
-    ```js
-        const response = await fetch("http://localhost:3000/calculate", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON(httpJsonBody)
-        });
-    ```
 ### Receive Data
-    Receive data using this format
+Receive data using this format the format below.
 
     ```js
-        const microSrvcData = await response.json();
+        const data = await response.json();
     ```
-##########################################################################
+The returned HTTP response contains the method (POST), headers, and JSON response body. 
+The client can access the microservice calculation results by parsing the body using `JSON.parse()` passing `data` as the argument. 
+
+Example below showing the retieval of `convertedValue` from the UnitConversionService HTTP response body:
+
+    ```js
+    // create a variable to store the parsed information
+        const resultConvert = JSON.parse(data.body)
+
+    // access the desired value from the parsed information and save as a variable
+        const resultConvertValue = resultConvert.convertedValue
+    ```
 
 ## UML Sequence Diagram
-
 ![UML Sequence Diagram](calculator_microservice/uml/uml_seq_diagram.png "Calculator Microservice UML Sequence Diagram")
-
-## Description
-The Calculator Microservice provides three different calculation operations through HTTP POST endpoint (`/calculate`). 
-Depending on the operation requested, the microservice can:
-
-- Convert one unit of measurement to another
-- Calculate the distance between two latitude/longitude coordinates
-- Calculate a study score based on the provided inputs
-
-The client sends a JSON request containing the desired operation and any required values. 
-The microservice processes the request and returns the operation results in the body of a JSON response.
-
-## Technologies Used
-- Node.js for runtime
-- Express.js for routing, middleware, request/response handling
-
-## Prerequesites
-- Node.js
-- node packet manager (npm)
-
-## Node Packages:
-- convert-units   -- Used for unit conversion operations
-- geolib          -- Used for distance calculation between latitude/longitude coordinates for distance operations
 
 ## Instructions for Demonstration
 1) Open a terminal
 2) Navigate to directory /calculator_microservice 
-3) Initialize the node server by entering the following bash commands:
+3) Initialize the node server by entering the following terminal commands:
 
     - npm install
     - npm start
 
 4) Open a second terminal
 5) Navigate to the /test_client directory
-6) Start the test_client interface by entering the following command:
+6) Start the test_client interface by entering the following command in terminal:
 
-    - node test_client_interface.js
+    - node cal_run_program.js
 
 7) Follow the prompts by entering requested
 
@@ -149,8 +164,6 @@ The microservice processes the request and returns the operation results in the 
 
     };
     ```
-                  
-### Microservice Implementation Instructions cont...
 2) Send an HTTP POST request to /calculate
 
     ```js

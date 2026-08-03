@@ -1,3 +1,6 @@
+// Distance Calculation Service
+// npm package geolib
+
 const geolib = require('geolib');
 // build service functions here and export so that controller has access to them
 
@@ -19,4 +22,3 @@ module.exports = {
     mileDistance,
     kmDistance
 };
-
