@@ -1,6 +1,28 @@
 # cs361-calculator-microservice
 
-##########################################################################
+## Description
+The Calculator Microservice provides three different calculation operations through HTTP POST endpoint (`/calculate`). 
+Depending on the operation requested, the microservice can:
+
+- Convert one unit of measurement to another
+- Calculate the distance between two latitude/longitude coordinates
+- Calculate a study score based on the provided inputs
+
+The client sends a JSON request containing the desired operation and any required values. 
+The microservice processes the request and returns the operation results in the body of a JSON response.
+
+### Technologies Used
+- Node.js for runtime
+- Express.js for routing, middleware, request/response handling
+
+### Prerequesites
+- Node.js
+- node packet manager (npm)
+
+### Node Packages:
+- convert-units   -- Used for unit conversion operations
+- geolib          -- Used for distance calculation between latitude/longitude coordinates for distance operations
+
 ## Communication Contract
 ### Send Requests
 Client must send HTTP POST request to the `/calculate` route endpoint
@@ -60,44 +82,21 @@ Client must send HTTP POST request to the `/calculate` route endpoint
     ```
 
 ## UML Sequence Diagram
-![UML Sequence Diagram](calculator_microservice/uml/uml_seq_diagram.png "Calculator Microservice UML Sequence Diagram")##########################################################################
-
-## Description
-The Calculator Microservice provides three different calculation operations through HTTP POST endpoint (`/calculate`). 
-Depending on the operation requested, the microservice can:
-
-- Convert one unit of measurement to another
-- Calculate the distance between two latitude/longitude coordinates
-- Calculate a study score based on the provided inputs
-
-The client sends a JSON request containing the desired operation and any required values. 
-The microservice processes the request and returns the operation results in the body of a JSON response.
-
-## Technologies Used
-- Node.js for runtime
-- Express.js for routing, middleware, request/response handling
-
-## Prerequesites
-- Node.js
-- node packet manager (npm)
-
-## Node Packages:
-- convert-units   -- Used for unit conversion operations
-- geolib          -- Used for distance calculation between latitude/longitude coordinates for distance operations
+![UML Sequence Diagram](calculator_microservice/uml/uml_seq_diagram.png "Calculator Microservice UML Sequence Diagram
 
 ## Instructions for Demonstration
 1) Open a terminal
 2) Navigate to directory /calculator_microservice 
-3) Initialize the node server by entering the following bash commands:
+3) Initialize the node server by entering the following terminal commands:
 
     - npm install
     - npm start
 
 4) Open a second terminal
 5) Navigate to the /test_client directory
-6) Start the test_client interface by entering the following command:
+6) Start the test_client interface by entering the following command in terminal:
 
-    - node test_client_interface.js
+    - node cal_run_program.js
 
 7) Follow the prompts by entering requested
 
@@ -147,8 +146,6 @@ The microservice processes the request and returns the operation results in the 
 
     };
     ```
-                  
-### Microservice Implementation Instructions cont...
 2) Send an HTTP POST request to /calculate
 
     ```js
