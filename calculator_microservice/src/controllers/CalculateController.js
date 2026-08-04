@@ -13,6 +13,14 @@ async function calculate (req, res) {
         case "convert": {
             console.log("CONVERT OP REQUESTED");
             console.log("HTTP REQUEST BODY: ", req.body)
+
+            if (typeof req.body.value !== "number") {
+
+                return res.status(400).json({
+                    error: "Invalid parameter",
+                    message: "Value must be a number."
+                });
+            };
             
             const convertedUnitValue = unitConversionService.convertUnits(req.body.value, req.body.unitFrom, req.body.unitTo);
             console.log(convertedUnitValue);
