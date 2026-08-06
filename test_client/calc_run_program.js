@@ -10,7 +10,7 @@ async function testUnitConversion() {
     console.log("UNIT CONVERT OP REQUEST BODY: ", http_req_body);
 
 
-    const response = await fetch('http://localhost:3000/calculate', {
+    const response = await fetch('http://localhost:3004/calculate', {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(http_req_body)
@@ -33,7 +33,7 @@ async function testDistance() {
 	};
     console.log("DIST OP REQUEST BODY: ", http_req_body);
 
-    const response = await fetch('http://localhost:3000/calculate', {
+    const response = await fetch('http://localhost:3004/calculate', {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(http_req_body)
@@ -57,7 +57,7 @@ async function testStudyScore() {
     console.log("STUDY SCORE OP REQUEST BODY: ", http_req_body);
 
 
-    const response = await fetch('http://localhost:3000/calculate', {
+    const response = await fetch('http://localhost:3004/calculate', {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(http_req_body)
@@ -68,6 +68,6 @@ async function testStudyScore() {
 
 };
 
-testUnitConversion()
+// testUnitConversion()
 // testDistance()
-// testStudyScore()
+testStudyScore()

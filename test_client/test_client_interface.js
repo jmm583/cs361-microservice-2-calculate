@@ -79,7 +79,7 @@ const main = async () => {
 			console.log("\nHTTP REQ BODY: ", http_req_body)
 
 			// sends an http request with http_req_body to /calulate route 
-			const response = await fetch('http://localhost:3000/calculate', {
+			const response = await fetch('http://localhost:3004/calculate', {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(http_req_body)
@@ -111,7 +111,7 @@ const main = async () => {
 			console.log("\nHTTP REQ BODY: ", http_req_body);
 
 			// sends an http request with http_req_body to /calculate route
-			const response = await fetch('http://localhost:3000/calculate', {
+			const response = await fetch('http://localhost:3004/calculate', {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(http_req_body)
@@ -146,7 +146,7 @@ const main = async () => {
 			console.log("\nHTTP REQ BODY: ", http_req_body);
 
 			// sends an http request with http_req_body to /calulate route 
-			const response = await fetch('http://localhost:3000/calculate', {
+			const response = await fetch('http://localhost:3004/calculate', {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(http_req_body)
