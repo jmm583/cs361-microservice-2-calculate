@@ -140,6 +140,7 @@ Example below showing the retieval of `convertedValue` from the UnitConversionSe
     const http_req_body = {
 
         operation: "distance",                          // must remain "distance"
+        units: "mi"                                     // can be "km", "m", or "m"
         startLatitude: parseFloat(latitude1),
         startLongitude: parseFloat(longitude1),
         endLatitude: parseFloat(latitude2),

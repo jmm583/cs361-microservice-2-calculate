@@ -26,6 +26,7 @@ async function testDistance() {
 
     const http_req_body = {
         operation: "distance", 
+        units: "",
         startLatitude: 40.7128,
         startLongitude: -74.0060,
         endLatitude: 42.3601,
@@ -40,7 +41,7 @@ async function testDistance() {
                 });
 
     const data = await response.json();
-    console.log("\nDIST OP HTTP RESPONSE: ", data);
+    console.log("\nDIST OP HTTP RESPONSE: ", data.body);
 };
 
 // STUDY SCORE OPERATION TEST
@@ -69,5 +70,5 @@ async function testStudyScore() {
 };
 
 // testUnitConversion()
-// testDistance()
-testStudyScore()
+testDistance()
+// testStudyScore()
